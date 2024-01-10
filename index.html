@@ -4,8 +4,46 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        
+        <div id="app">
+
+            <div class="container">
+                <div class="slider-wrapper" tabindex="0">
+                    
+                    
+                    <div class="item">
+                        <img :src="slides[counterSlide].image" :alt="slides[counterSlide].title" />
+                        <div class="text">
+                            <h3>{{ slides[counterSlide].title }}</h3>
+                            <p>
+                                {{ slides[counterSlide].text }}
+                            </p>
+                        </div>
+                    </div>
+
+    
+                    <div class="thumbs">
+
+                        <div class="prev" @click="prev()"></div>
+
+                        <div class="next" @click="next()"></div>
+
+                        <div v-for="(singleThumb, index) in slides">
+                            <div  @click="thumbButton(index)" class="thumb" :class="counterSlide == index ? 'active' : ''">
+                                <img :src="singleThumb.image" :alt="singleThumb.title" />
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+    
+        </div>
+        <!-- Vue -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!-- JS -->
+        <script type="text/javascript" src="js/scripts.js"></script>
     </body>
 </html>
